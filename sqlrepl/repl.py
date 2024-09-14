@@ -41,7 +41,12 @@ class SQLRepl:
                     continue
                 elif text.startswith(':'):
                     cmd, *args = shlex.split(text[1:])
-                    self.cmd[cmd](self, *args)
+                    try:
+                        cmd = self.cmd[cmd]
+                    except KeyError:
+                        print(f"Command '{cmd}' not found")
+                        continue
+                    cmd(self, *args)
                 else:
                     self.query = text
                     self.execute()
@@ -53,6 +58,7 @@ class SQLRepl:
         if self.query is None:
             return
         self.cursor = self.connection.execute(sa.text(self.query))
+        # TODO: what to do when doesnt return rows
         self.columns = list(self.cursor.keys())
         if (preview:=self.settings['preview']) > 0:
             rows = self.cursor.fetchmany(preview)
