@@ -3,6 +3,12 @@ sqlalchemy-repl
 
 REPL for SQLAlchemy and Python REPL.
 
+Installation
+------------
+```
+pip install sqlalchemy-repl
+```
+
 Basic usage
 -----------
 ```
