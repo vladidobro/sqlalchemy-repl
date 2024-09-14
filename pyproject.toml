@@ -3,6 +3,7 @@ name = "sqlalchemy-repl"
 version = "0.1.0"
 description = "REPL for SQLAlchemy"
 authors = ["Vladislav Wohlrath <vladislav@wohlrath.cz>"]
+license = "GPL-3.0.only"
 readme = "README.md"
 packages = [ { include = "sqlrepl" } ]
 
